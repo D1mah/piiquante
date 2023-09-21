@@ -1,6 +1,8 @@
 const express= require('express');
 const mongoose=require('mongoose');
 
+// Importation des routeurs dans l'application
+const userRoutes= require('./routes/user');
 
 
 const app= express();
@@ -23,29 +25,9 @@ useUnifiedTopology: true })
 
 app.use(express.json());
 
-app.use((req,res,next)=>{
-    console.log("Requête reçue !");
-    next();
-})
+//Enregistrement des routes
+app.use('/api/auth', userRoutes);
 
-app.use((req, res,next)=>{
-    res.status(201);
-    next();
-})
-
-app.use((req,res, next)=>{
-    res.json({message:'Votre requête a bien été reçue à nouveau !'})
-    next();
-});
-
-app.use((req, res,next)=>{
-    console.log('La réponse a été envoyé avec succès!')
-    next();
-})
-
-app.use((req, res,next)=>{
-  console.log("T'es un champion mais active toi!")
-})
 
 module.exports=app;
 
