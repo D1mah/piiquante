@@ -3,6 +3,7 @@ const mongoose=require('mongoose');
 const path = require('path');
 
 // Importation des routeurs dans l'application
+const sauceRoutes= require('./routes/sauce');
 const userRoutes= require('./routes/user');
 
 
@@ -28,7 +29,7 @@ app.use(express.json());
 
 //Enregistrement des routes
 app.use('/api/auth', userRoutes);
-
+app.use('/api/sauces', sauceRoutes);
 app.use('/images', express.static(path.join(__dirname, 'images')));
 
 
