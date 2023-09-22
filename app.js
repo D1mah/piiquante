@@ -1,5 +1,6 @@
 const express= require('express');
 const mongoose=require('mongoose');
+const path = require('path');
 
 // Importation des routeurs dans l'application
 const userRoutes= require('./routes/user');
@@ -27,6 +28,8 @@ app.use(express.json());
 
 //Enregistrement des routes
 app.use('/api/auth', userRoutes);
+
+app.use('/images', express.static(path.join(__dirname, 'images')));
 
 
 module.exports=app;
