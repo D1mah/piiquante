@@ -2,8 +2,11 @@ const bcrypt= require('bcrypt');
 const jwt= require('jsonwebtoken');
 const User= require('../models/User');
 
+const emailValidator=require("email-validator");
+
 
 exports.signup = (req, res, next) => {
+    if (emailValidator.validate(req.body.email)){
     bcrypt.hash(req.body.password, 10)
     .then(hash=>{
         const user=new User({
@@ -15,7 +18,7 @@ exports.signup = (req, res, next) => {
         .catch(error=>res.status(400).json({error}));
     })
     .catch(error=>res.status(500).json({error}));
-};
+}};
 
 exports.login = (req, res, next) => {
     User.findOne({email:req.body.email})
