@@ -3,6 +3,9 @@
 
 const Sauce= require('../models/Sauce');
 const fs= require('fs');
+// const dotenv = require("dotenv");
+
+// dotenv.config();
 
 
 // Logique métier: Définition des différentes actions API
@@ -30,6 +33,7 @@ exports.createSauce=(req, res, next)=>{
     sauce.save()
     .then(()=>{res.status(201).json({message:'Sauce enregistrée !'})})
     .catch(error =>{res.status(400).json({error})});
+    console.log(sauce);
 };
 
 exports.getOneSauce= (req, res, next)=>{

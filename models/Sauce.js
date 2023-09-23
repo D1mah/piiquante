@@ -13,7 +13,7 @@ const sauceSchema= mongoose.Schema({
     // principal ingrédient épicé de la sauce
     mainPepper: {type:String, required:true},
     // URL de l'image de la sauce téléchargée par l'utilisateur
-    imageUrl: {type:String, required:true},
+    imageUrl: {type:String},
     // nombre entre 1 et 10 décrivant la piquance de la sauce
     heat: {type: Number, required:true},
     // nombre d'utilisateurs qui aiment (= likent) la sauce
