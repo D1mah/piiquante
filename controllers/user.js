@@ -1,6 +1,9 @@
 const bcrypt= require('bcrypt');
 const jwt= require('jsonwebtoken');
 const User= require('../models/User');
+const dotenv = require("dotenv");
+
+dotenv.config();
 
 const emailValidator=require("email-validator");
 const passwordValidator = require('password-validator');
@@ -44,13 +47,13 @@ exports.login = (req, res, next) => {
             bcrypt.compare(req.body.password, user.password)
             .then( valid => {
                 if (!valid){
-                    res.status(401).json({message: 'Mot de passe incorrect !'});
+                    res.status(401).json({message: 'Paire identifiant/mot de passe incorrecte !'});
                 }else{
                     res.status(200).json({
                         userId: user._id,
                         token:jwt.sign(
                             {userId: user._id},
-                            'RANDOM_TOKEN_SECRET',
+                            process.env.TOKEN_SECRET,
                             {expiresIn:'24h'}
                         )
                     });

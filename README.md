@@ -17,8 +17,9 @@ Optimisé pour les bases de données NoSql MongoDB.
     --> Créer une fichier .env contenant les variables :
         ---> PORT: pour le port 
         ---> DBURL: pour l'adresse entière de la base de donnée: Ex: "mongodb+srv://<username>:<password>@<clusterName>.mongodb.net/?retryWrites=true&w=majority"
-        --->TOKEN_SECRET: pour la clef qui générera le hash du password
+        ---> TOKEN_SECRET: pour la clef qui générera le hash du password
 
+-> Créer un dossier "/images" à la racine du projet
     
 
 ********  Démarrer l'application  *********
